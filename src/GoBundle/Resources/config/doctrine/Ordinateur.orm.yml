@@ -17,7 +17,7 @@ GoBundle\Entity\Ordinateur:
             type: integer
             nullable: true
     lifecycleCallbacks: {  }
-    oneToMany:
+    oneToOne:
         attribution:
             targetEntity: Attribution
             mappedBy: ordinateur

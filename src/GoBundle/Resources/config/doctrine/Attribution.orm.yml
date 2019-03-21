@@ -14,7 +14,7 @@ GoBundle\Entity\Attribution:
             length: 255
 
     lifecycleCallbacks: {  }
-    manyToOne:
+    oneToOne:
         utilisateur:
             targetEntity: Utilisateur
             inversedBy: attribution
@@ -27,6 +27,7 @@ GoBundle\Entity\Attribution:
             joinColumn:
                 name: ordinateur_id
                 referencedColumnName: id
+    manyToOne:
         creneau:
             targetEntity: Creneau
             inversedBy: attribution

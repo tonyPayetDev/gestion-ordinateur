@@ -24,7 +24,7 @@ GoBundle\Entity\Utilisateur:
             type: date
             nullable: true
     lifecycleCallbacks: {  }
-    oneToMany:
+    oneToOne:
         attribution:
             targetEntity: Attribution
             mappedBy: utilisateur 
