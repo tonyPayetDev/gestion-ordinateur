@@ -1,0 +1,16 @@
+{% extends '@Go/base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Edition {{ entiteNom }}{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    {% block ActionsBtn %}
+        {% if actions is defined  and actions.lister is defined %}
+            <a href="{{ path(actions.retour) }}" class="btn btn-white">Retour</a>
+        {% endif %}
+        <button class="btn btn-primary" type="submit" name="btn-form">Sauvegarder</button>
+    {% endblock %}
+    {{ form_end(form) }}
+{% endblock %}

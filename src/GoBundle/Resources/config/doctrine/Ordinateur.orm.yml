@@ -1,0 +1,23 @@
+GoBundle\Entity\Ordinateur:
+    type: entity
+    table: Ordinateurs
+    repositoryClass: GoBundle\Repository\OrdinateurRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+            nullable: true
+        ip:
+            type: integer
+            nullable: true
+    lifecycleCallbacks: {  }
+    oneToMany:
+        attribution:
+            targetEntity: Attribution
+            mappedBy: ordinateur

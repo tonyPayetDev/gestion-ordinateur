@@ -1,0 +1,96 @@
+{% extends '@Go/base.html.twig' %}
+
+{% block title %}Liste des {{ entiteNom }} {% endblock %}
+
+{% block body %}
+    <a class="btn btn-primary "
+       href="{{ path(actions.editer,{(entite):0}) }}"><i
+                class="fa fa-plus"></i> Ajouter</a>
+
+    {% if items|length>0 %}
+        <div class="table-responsive">
+            <table id="dataTables" class="table table-hover">
+                <thead>
+                <tr>
+                    {% for key,value in items[0] %}
+                        {% if key!='id' %}
+                            <th>{{ key|capitalize }}</th>
+                        {% endif %}
+                    {% endfor %}
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in items %}
+                    <tr data-id="{{ item.id }}">
+                        {% for key,value in item %}
+                            {% if key!='id' %}
+                                <td>
+                                    {% if false %}
+                                        {{ value | date('d-m-Y') }}
+                                    {% elseif value is same as(false) or value is same as(true) %}
+                                        {{ value ?'Oui':'Non' }}
+                                    {% elseif key=='img' %}
+                                        {% if actions.editer is defined %}
+                                            <a href="{{ path(actions.editer,{(entite):item.id}) }}">
+                                        {% endif %}
+                                        <img src="{{ value }}" style="height:75px">
+                                        {% if actions.editer is defined %}
+                                            </a>
+                                        {% endif %}
+                                    {% else %}
+                                        {% if key=='datedebut' or key=='datefin' %}
+                                            {{ value | date('d-m-Y h:i') }}
+                                        {% else %}
+                                            {{ value }}
+
+                                        {% endif %}
+
+                                    {% endif %}
+                                </td>
+                            {% endif %}
+                        {% endfor %}
+                        <td>
+                            {% block zoneActions %}
+
+                                {% if actions.editer is defined %}
+                                    <a class="btn btn-primary"
+                                       href="{{ path(actions.editer,{(entite):item.id}) }}"><i
+                                                class="fa fa-edit"></i></a>
+                                {% endif %}
+
+                                {% if actions.dupliquer is defined %}
+                                    <a class="btn btn-white"
+                                       href="{{ path(actions.dupliquer,{(entite):item.id,'copie':1}) }}"><i
+                                                class="fa fa-clone" aria-hidden="true"></i></a>
+                                {% endif %}
+
+                                {% if actions.supprimer is defined %}
+                                    <span class="btn btn-white confirmation"
+                                          data-title="Confirmation"
+                                          data-methode="DELETE"
+                                          data-text="Etes-vous sur de vouloir supprimer ?"
+                                          data-href="{{ path(actions.supprimer,{(entite)|raw:item.id}) }}"><i
+                                                class="fa fa-trash"></i></span>
+                                {% endif %}
+                            {% endblock %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        Aucun élément enregistré
+    {% endif %}
+
+    <script>
+        $('.btn.confirmation').click(function () {
+            if (confirm($(this).data('text'))) {
+                document.location.href = $(this).data('href');
+            }
+        });
+    </script>
+{% endblock %}
