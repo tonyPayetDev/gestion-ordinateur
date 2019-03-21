@@ -1,13 +1,19 @@
 Symfony Standard Edition
 ========================
 Techno utiliser 
- *symfony 3 
- *heroku 
- *twig boostrap 4 
- *phpstorm
 
-Lien vers le site
-http://gestion-ordinateur.herokuapp.com/
+  * symfony 3 
+
+  * heroku
+
+  * twig boostrap 4 
+
+  * phpstorm
+  
+  * php cs-fixer 
+  
+  * Lien vers le site http://gestion-ordinateur.herokuapp.com/
+
 
 Welcome to the Symfony Standard Edition - a fully-functional Symfony2
 application that you can use as the skeleton for your new applications.
