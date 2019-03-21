@@ -4,13 +4,16 @@
 {% block title %}Edition {{ entiteNom }}{% endblock %}
 
 {% block body %}
+<div class="m-2" >
     {{ form_start(form) }}
-    {{ form_errors(form) }}
     {% block ActionsBtn %}
         {% if actions is defined  and actions.lister is defined %}
             <a href="{{ path(actions.retour) }}" class="btn btn-white">Retour</a>
         {% endif %}
         <button class="btn btn-primary" type="submit" name="btn-form">Sauvegarder</button>
     {% endblock %}
+    {{ form_errors(form) }}
+
     {{ form_end(form) }}
+ </div>
 {% endblock %}

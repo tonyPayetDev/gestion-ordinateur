@@ -17,12 +17,15 @@ GoBundle\Entity\Attribution:
     oneToOne:
         utilisateur:
             targetEntity: Utilisateur
+            cascade: ["persist","remove"]
             inversedBy: attribution
             joinColumn:
                 name: utilisateur_id
                 referencedColumnName: id
+
         ordinateur:
             targetEntity: Ordinateur
+            cascade: ["persist","remove"]
             inversedBy: attribution
             joinColumn:
                 name: ordinateur_id

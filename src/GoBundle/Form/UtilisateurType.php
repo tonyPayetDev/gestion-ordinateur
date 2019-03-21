@@ -8,7 +8,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class UtilisateurType extends AbstractType
 {
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nom')->add('prenom')->add('tel')->add('datedenaissance');
@@ -16,9 +15,9 @@ class UtilisateurType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'GoBundle\Entity\Utilisateur'
-        ));
+        ]);
     }
 
     public function getBlockPrefix()

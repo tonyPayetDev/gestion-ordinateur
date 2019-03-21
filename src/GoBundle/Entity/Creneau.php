@@ -3,7 +3,7 @@
 namespace GoBundle\Entity;
 
 /**
- * Creneau
+ * Creneau.
  */
 class Creneau
 {
@@ -27,9 +27,8 @@ class Creneau
      */
     private $datefin;
 
-
     /**
-     * Get id
+     * Get id.
      *
      * @return integer
      */
@@ -39,7 +38,7 @@ class Creneau
     }
 
     /**
-     * Set titre
+     * Set titre.
      *
      * @param string $titre
      *
@@ -53,7 +52,7 @@ class Creneau
     }
 
     /**
-     * Get titre
+     * Get titre.
      *
      * @return string
      */
@@ -63,7 +62,7 @@ class Creneau
     }
 
     /**
-     * Set datedebut
+     * Set datedebut.
      *
      * @param \DateTime $datedebut
      *
@@ -77,7 +76,7 @@ class Creneau
     }
 
     /**
-     * Get datedebut
+     * Get datedebut.
      *
      * @return \DateTime
      */
@@ -87,7 +86,7 @@ class Creneau
     }
 
     /**
-     * Set datefin
+     * Set datefin.
      *
      * @param \DateTime $datefin
      *
@@ -101,7 +100,7 @@ class Creneau
     }
 
     /**
-     * Get datefin
+     * Get datefin.
      *
      * @return \DateTime
      */
@@ -109,14 +108,14 @@ class Creneau
     {
         return $this->datefin;
     }
+
     /**
      * @var \GoBundle\Entity\Attribution
      */
     private $attribution;
 
-
     /**
-     * Set attribution
+     * Set attribution.
      *
      * @param \GoBundle\Entity\Attribution $attribution
      *
@@ -130,7 +129,7 @@ class Creneau
     }
 
     /**
-     * Get attribution
+     * Get attribution.
      *
      * @return \GoBundle\Entity\Attribution
      */
@@ -138,8 +137,9 @@ class Creneau
     {
         return $this->attribution;
     }
+
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -147,7 +147,7 @@ class Creneau
     }
 
     /**
-     * Add attribution
+     * Add attribution.
      *
      * @param \GoBundle\Entity\Attribution $attribution
      *
@@ -161,7 +161,7 @@ class Creneau
     }
 
     /**
-     * Remove attribution
+     * Remove attribution.
      *
      * @param \GoBundle\Entity\Attribution $attribution
      */

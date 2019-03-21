@@ -3,51 +3,51 @@
 namespace GoBundle\Controller;
 
 use GoBundle\Entity\Utilisateur;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Utilisateur Controller
+ * Utilisateur Controller.
  *
  * @Route("utilisateurs")
  */
 class UtilisateurController extends Controller
 {
     /**
-     * Lister [ROLE_ADMIN]
+     * Lister [ROLE_ADMIN].
      *
      * @Route("/", name="gobundle_utilisateurs_lister", methods={"GET"})
      * @Template("@Go/Listes/Liste.html.twig")
      */
     public function listerAction()
     {
-        return array(
+        return [
             'items' => $this->getDoctrine()->getManager()->createQuery(
-                "SELECT utilisateur.id, utilisateur.nom FROM GoBundle:Utilisateur as utilisateur"
+                'SELECT utilisateur.id, utilisateur.nom FROM GoBundle:Utilisateur as utilisateur'
             )->getArrayResult(),
-            'actions' => array(
-                'lister' => "gobundle_utilisateurs_lister",
-                'editer' => "gobundle_utilisateur_edition",
-                'dupliquer' => "gobundle_utilisateur_edition",
-                'supprimer' => "gobundle_utilisateur_suppression",
-            ),
-            'entite' => 'Utilisateur',
+            'actions' => [
+                'lister'    => 'gobundle_utilisateurs_lister',
+                'editer'    => 'gobundle_utilisateur_edition',
+                'dupliquer' => 'gobundle_utilisateur_edition',
+                'supprimer' => 'gobundle_utilisateur_suppression',
+            ],
+            'entite'    => 'Utilisateur',
             'entiteNom' => 'utilisateurs',
-        );
+        ];
     }
 
     /**
-     * Formulaire d'ajout/edition [ROLE_ADMIN]
+     * Formulaire d'ajout/edition [ROLE_ADMIN].
      *
      * @Route("/edition/{Utilisateur}", name="gobundle_utilisateur_edition", methods={"GET","POST"}, requirements={"Utilisateur" = "\d+"})
      * @Template("@Go/Formulaires/Formulaire.html.twig")
      */
     public function editerAction(Request $request, Utilisateur $Utilisateur = null)
     {
-        if ($Utilisateur == null) {
+        if (null === $Utilisateur) {
             $Utilisateur = new  Utilisateur();
         } elseif ($request->query->has('copie')) {
             $Utilisateur = clone $Utilisateur;
@@ -63,21 +63,23 @@ class UtilisateurController extends Controller
                 $em->persist($Utilisateur);
                 $em->flush();
                 $this->get('event_dispatcher')->dispatch(
-                    'enregistrement', new GenericEvent('enregistrement', array('nom' => 'Utilisateur', 'Entity' => $Utilisateur, 'id' => $id))
+                    'enregistrement',
+                    new GenericEvent('enregistrement', ['nom' => 'Utilisateur', 'Entity' => $Utilisateur, 'id' => $id])
                 );
+
                 return $this->redirect($this->generateUrl('gobundle_utilisateurs_lister'));
             }
         }
 
-        return array(
-            'form' => $form->createView(),
+        return [
+            'form'      => $form->createView(),
             'entiteNom' => 'utilisateur',
-            'retour' => "gobundle_utilisateurs_lister",
-        );
+            'retour'    => 'gobundle_utilisateurs_lister',
+        ];
     }
 
     /**
-     * Suppression [ROLE_ADMIN]
+     * Suppression [ROLE_ADMIN].
      *
      * @Route("/suppression/{Utilisateur}", name="gobundle_utilisateur_suppression", methods={"GET"}, requirements={"Utilisateur" = "\d+"})
      */
@@ -89,11 +91,12 @@ class UtilisateurController extends Controller
             $em->remove($Utilisateur);
             $em->flush();
             $this->get('event_dispatcher')->dispatch(
-                'suppression', new GenericEvent('suppression', array('nom' => 'Utilisateur', 'id' => $id))
+                'suppression',
+                new GenericEvent('suppression', ['nom' => 'Utilisateur', 'id' => $id])
             );
+
             return $this->redirect($this->generateUrl('gobundle_utilisateurs_lister'));
         }
         throw $this->createAccessDeniedException('You cannot access this page!');
     }
-
 }

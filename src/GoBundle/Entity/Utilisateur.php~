@@ -3,7 +3,7 @@
 namespace GoBundle\Entity;
 
 /**
- * Utilisateur
+ * Utilisateur.
  */
 class Utilisateur
 {
@@ -32,9 +32,8 @@ class Utilisateur
      */
     private $datedenaissance;
 
-
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -44,7 +43,7 @@ class Utilisateur
     }
 
     /**
-     * Set nom
+     * Set nom.
      *
      * @param string $nom
      *
@@ -58,7 +57,7 @@ class Utilisateur
     }
 
     /**
-     * Get nom
+     * Get nom.
      *
      * @return string
      */
@@ -68,7 +67,7 @@ class Utilisateur
     }
 
     /**
-     * Set prenom
+     * Set prenom.
      *
      * @param string $prenom
      *
@@ -82,7 +81,7 @@ class Utilisateur
     }
 
     /**
-     * Get prenom
+     * Get prenom.
      *
      * @return string
      */
@@ -92,9 +91,9 @@ class Utilisateur
     }
 
     /**
-     * Set tel
+     * Set tel.
      *
-     * @param integer $tel
+     * @param int $tel
      *
      * @return Utilisateur
      */
@@ -106,7 +105,7 @@ class Utilisateur
     }
 
     /**
-     * Get tel
+     * Get tel.
      *
      * @return int
      */
@@ -116,7 +115,7 @@ class Utilisateur
     }
 
     /**
-     * Set datedenaissance
+     * Set datedenaissance.
      *
      * @param \DateTime $datedenaissance
      *
@@ -130,7 +129,7 @@ class Utilisateur
     }
 
     /**
-     * Get datedenaissance
+     * Get datedenaissance.
      *
      * @return \DateTime
      */
@@ -138,13 +137,14 @@ class Utilisateur
     {
         return $this->datedenaissance;
     }
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $attributions;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -152,7 +152,7 @@ class Utilisateur
     }
 
     /**
-     * Add attribution
+     * Add attribution.
      *
      * @param \GoBundle\Entity\Attribution $attribution
      *
@@ -166,7 +166,7 @@ class Utilisateur
     }
 
     /**
-     * Remove attribution
+     * Remove attribution.
      *
      * @param \GoBundle\Entity\Attribution $attribution
      */
@@ -176,7 +176,7 @@ class Utilisateur
     }
 
     /**
-     * Get attributions
+     * Get attributions.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -186,7 +186,7 @@ class Utilisateur
     }
 
     /**
-     * Set attributions
+     * Set attributions.
      *
      * @param \GoBundle\Entity\Attribution $attributions
      *
@@ -198,14 +198,14 @@ class Utilisateur
 
         return $this;
     }
+
     /**
      * @var \GoBundle\Entity\Ordinateur
      */
     private $ordinateur;
 
-
     /**
-     * Set ordinateur
+     * Set ordinateur.
      *
      * @param \GoBundle\Entity\Ordinateur $ordinateur
      *
@@ -219,7 +219,7 @@ class Utilisateur
     }
 
     /**
-     * Get ordinateur
+     * Get ordinateur.
      *
      * @return \GoBundle\Entity\Ordinateur
      */
@@ -227,19 +227,33 @@ class Utilisateur
     {
         return $this->ordinateur;
     }
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $attribution;
 
-
     /**
-     * Get attribution
+     * Get attribution.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getAttribution()
     {
         return $this->attribution;
+    }
+
+    /**
+     * Set attribution.
+     *
+     * @param \GoBundle\Entity\Attribution|null $attribution
+     *
+     * @return Utilisateur
+     */
+    public function setAttribution(\GoBundle\Entity\Attribution $attribution = null)
+    {
+        $this->attribution = $attribution;
+
+        return $this;
     }
 }

@@ -27,4 +27,5 @@ GoBundle\Entity\Utilisateur:
     oneToOne:
         attribution:
             targetEntity: Attribution
+            cascade: [ 'persist', 'remove' ]
             mappedBy: utilisateur 

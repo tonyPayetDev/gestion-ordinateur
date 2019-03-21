@@ -3,7 +3,7 @@
 namespace GoBundle\Entity;
 
 /**
- * Ordinateur
+ * Ordinateur.
  */
 class Ordinateur
 {
@@ -22,9 +22,8 @@ class Ordinateur
      */
     private $ip;
 
-
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -34,7 +33,7 @@ class Ordinateur
     }
 
     /**
-     * Set nom
+     * Set nom.
      *
      * @param string $nom
      *
@@ -48,7 +47,7 @@ class Ordinateur
     }
 
     /**
-     * Get nom
+     * Get nom.
      *
      * @return string
      */
@@ -58,9 +57,9 @@ class Ordinateur
     }
 
     /**
-     * Set ip
+     * Set ip.
      *
-     * @param integer $ip
+     * @param int $ip
      *
      * @return Ordinateur
      */
@@ -72,7 +71,7 @@ class Ordinateur
     }
 
     /**
-     * Get ip
+     * Get ip.
      *
      * @return int
      */
@@ -80,13 +79,14 @@ class Ordinateur
     {
         return $this->ip;
     }
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $attributions;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -94,7 +94,7 @@ class Ordinateur
     }
 
     /**
-     * Add attribution
+     * Add attribution.
      *
      * @param \GoBundle\Entity\Attribution $attribution
      *
@@ -108,7 +108,7 @@ class Ordinateur
     }
 
     /**
-     * Remove attribution
+     * Remove attribution.
      *
      * @param \GoBundle\Entity\Attribution $attribution
      */
@@ -118,7 +118,7 @@ class Ordinateur
     }
 
     /**
-     * Get attributions
+     * Get attributions.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -128,7 +128,7 @@ class Ordinateur
     }
 
     /**
-     * Set attributions
+     * Set attributions.
      *
      * @param \GoBundle\Entity\Attribution $attributions
      *
@@ -140,19 +140,33 @@ class Ordinateur
 
         return $this;
     }
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $attribution;
 
-
     /**
-     * Get attribution
+     * Get attribution.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getAttribution()
     {
         return $this->attribution;
+    }
+
+    /**
+     * Set attribution.
+     *
+     * @param \GoBundle\Entity\Attribution|null $attribution
+     *
+     * @return Ordinateur
+     */
+    public function setAttribution(\GoBundle\Entity\Attribution $attribution = null)
+    {
+        $this->attribution = $attribution;
+
+        return $this;
     }
 }

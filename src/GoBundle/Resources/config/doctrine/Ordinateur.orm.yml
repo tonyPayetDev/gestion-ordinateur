@@ -21,3 +21,4 @@ GoBundle\Entity\Ordinateur:
         attribution:
             targetEntity: Attribution
             mappedBy: ordinateur
+            cascade: [ 'persist', 'remove' ]

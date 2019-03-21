@@ -3,53 +3,60 @@
 namespace GoBundle\Controller;
 
 use GoBundle\Entity\Attribution;
-use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Attribution Controller
+ * Attribution Controller.
  *
  * @Route("/")
  */
 class AttributionController extends Controller
 {
     /**
-     * Lister [ROLE_ADMIN]
+     * Lister [ROLE_ADMIN].
      *
      * @Route("/", name="gobundle_attributions_lister", methods={"GET"})
      * @Template("@Go/Listes/Liste.html.twig")
      */
     public function listerAction()
     {
-        $attri=$this->getDoctrine()->getManager()->getRepository("GoBundle:Attribution")->findAll();
+        $attributions = $this->getDoctrine()->getManager()->getRepository('GoBundle:Attribution')->findAll();
+        $items = [];
 
-        return array(
-            'items' => $this->getDoctrine()->getManager()->createQuery(
-                "SELECT attribution.id, attribution.titre FROM GoBundle:Attribution as attribution"
-            )->getArrayResult(),
-            'actions' => array(
-                'lister' => "gobundle_attributions_lister",
-                'editer' => "gobundle_attribution_edition",
-                'dupliquer' => "gobundle_attribution_edition",
-                'supprimer' => "gobundle_attribution_suppression",
-            ),
-            'entite' => 'Attribution',
+        foreach ($attributions as $key => $value) {
+            $items[$key]['id'] = $value->getId();
+            $items[$key]['Titre attribution'] = $value->getTitre();
+            $items[$key]['Utilisateurs'] = $value->getUtilisateur()->getNom();
+            $items[$key]['Ordinateurs'] = $value->getOrdinateur()->getNom();
+            $items[$key]['Creneaux'] = $value->getCreneau()->getTitre();
+        }
+
+        return [
+            'items'   => $items,
+            'actions' => [
+                'lister'    => 'gobundle_attributions_lister',
+                'editer'    => 'gobundle_attribution_edition',
+                'dupliquer' => 'gobundle_attribution_edition',
+                'supprimer' => 'gobundle_attribution_suppression',
+            ],
+            'entite'    => 'Attribution',
             'entiteNom' => 'attributions',
-        );
+        ];
     }
 
     /**
-     * Formulaire d'ajout/edition [ROLE_ADMIN]
+     * Formulaire d'ajout/edition [ROLE_ADMIN].
      *
      * @Route("/edition/{Attribution}", name="gobundle_attribution_edition", methods={"GET","POST"}, requirements={"Attribution" = "\d+"})
      * @Template("@Go/Formulaires/Formulaire.html.twig")
      */
     public function editerAction(Request $request, Attribution $Attribution = null)
     {
-        if ($Attribution == null) {
+        if (null === $Attribution) {
             $Attribution = new  Attribution();
         } elseif ($request->query->has('copie')) {
             $Attribution = clone $Attribution;
@@ -63,23 +70,32 @@ class AttributionController extends Controller
                 $id = $Attribution->getId();
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($Attribution);
-                $em->flush();
+                try {
+                    $em->flush();
+                } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e) {
+                    $this->addFlash('warning', "Cette ordi a deja etais attribuer veuillez annuler l'attribution avant changement ");
+
+                    return $this->redirect($this->generateUrl('gobundle_attribution_edition'));
+                    throw $e;
+                }
                 $this->get('event_dispatcher')->dispatch(
-                    'enregistrement', new GenericEvent('enregistrement', array('nom' => 'Attribution', 'Entity' => $Attribution, 'id' => $id))
+                    'enregistrement',
+                    new GenericEvent('enregistrement', ['nom' => 'Attribution', 'Entity' => $Attribution, 'id' => $id])
                 );
+
                 return $this->redirect($this->generateUrl('gobundle_attributions_lister'));
             }
         }
 
-        return array(
-            'form' => $form->createView(),
+        return [
+            'form'      => $form->createView(),
             'entiteNom' => 'attribution',
-            'retour' => "gobundle_attributions_lister",
-        );
+            'retour'    => 'gobundle_attributions_lister',
+        ];
     }
 
     /**
-     * Suppression [ROLE_ADMIN]
+     * Suppression [ROLE_ADMIN].
      *
      * @Route("/suppression/{Attribution}", name="gobundle_attribution_suppression", methods={"GET"}, requirements={"Attribution" = "\d+"})
      */
@@ -91,11 +107,12 @@ class AttributionController extends Controller
             $em->remove($Attribution);
             $em->flush();
             $this->get('event_dispatcher')->dispatch(
-                'suppression', new GenericEvent('suppression', array('nom' => 'Attribution', 'id' => $id))
+                'suppression',
+                new GenericEvent('suppression', ['nom' => 'Attribution', 'id' => $id])
             );
+
             return $this->redirect($this->generateUrl('gobundle_attributions_lister'));
         }
         throw $this->createAccessDeniedException('You cannot access this page!');
     }
-
 }

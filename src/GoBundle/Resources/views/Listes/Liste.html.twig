@@ -3,13 +3,14 @@
 {% block title %}Liste des {{ entiteNom }} {% endblock %}
 
 {% block body %}
-    <a class="btn btn-primary "
+    <h1>Liste des {{entiteNom}} </h1>
+    <a class="btn btn-primary btn-sm "
        href="{{ path(actions.editer,{(entite):0}) }}"><i
-                class="fa fa-plus"></i> Ajouter</a>
+                class="fa fa-plus "></i> Ajouter un {{entite}}</a>
 
     {% if items|length>0 %}
-        <div class="table-responsive">
-            <table id="dataTables" class="table table-hover">
+        <div class="table-responsive m-4">
+            <table id="dataTables" class="table table-hover ">
                 <thead>
                 <tr>
                     {% for key,value in items[0] %}
@@ -56,7 +57,7 @@
                             {% block zoneActions %}
 
                                 {% if actions.editer is defined %}
-                                    <a class="btn btn-primary"
+                                    <a class="btn btn-primary btn-sm "
                                        href="{{ path(actions.editer,{(entite):item.id}) }}"><i
                                                 class="fa fa-edit"></i></a>
                                 {% endif %}
@@ -71,7 +72,7 @@
                                     <span class="btn btn-white confirmation"
                                           data-title="Confirmation"
                                           data-methode="DELETE"
-                                          data-text="Etes-vous sur de vouloir supprimer ?"
+                                          data-text="Etes-vous sur de vouloir supprimer un {{entite}} ?"
                                           data-href="{{ path(actions.supprimer,{(entite)|raw:item.id}) }}"><i
                                                 class="fa fa-trash"></i></span>
                                 {% endif %}

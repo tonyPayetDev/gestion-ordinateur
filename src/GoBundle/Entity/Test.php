@@ -3,7 +3,7 @@
 namespace GoBundle\Entity;
 
 /**
- * Test
+ * Test.
  */
 class Test
 {
@@ -17,9 +17,8 @@ class Test
      */
     private $name;
 
-
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -29,7 +28,7 @@ class Test
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -43,7 +42,7 @@ class Test
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -52,4 +51,3 @@ class Test
         return $this->name;
     }
 }
-

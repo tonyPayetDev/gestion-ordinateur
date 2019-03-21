@@ -3,7 +3,7 @@
 namespace GoBundle\Entity;
 
 /**
- * Attribution
+ * Attribution.
  */
 class Attribution
 {
@@ -22,9 +22,8 @@ class Attribution
      */
     private $datecreation;
 
-
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -34,7 +33,7 @@ class Attribution
     }
 
     /**
-     * Set titre
+     * Set titre.
      *
      * @param string $titre
      *
@@ -48,7 +47,7 @@ class Attribution
     }
 
     /**
-     * Get titre
+     * Get titre.
      *
      * @return string
      */
@@ -58,7 +57,7 @@ class Attribution
     }
 
     /**
-     * Set datecreation
+     * Set datecreation.
      *
      * @param \DateTime $datecreation
      *
@@ -72,7 +71,7 @@ class Attribution
     }
 
     /**
-     * Get datecreation
+     * Get datecreation.
      *
      * @return \DateTime
      */
@@ -80,6 +79,7 @@ class Attribution
     {
         return $this->datecreation;
     }
+
     /**
      * @var \DateTime
      */
@@ -100,9 +100,8 @@ class Attribution
      */
     private $ordinateur;
 
-
     /**
-     * Set datedebut
+     * Set datedebut.
      *
      * @param \DateTime $datedebut
      *
@@ -116,7 +115,7 @@ class Attribution
     }
 
     /**
-     * Get datedebut
+     * Get datedebut.
      *
      * @return \DateTime
      */
@@ -126,7 +125,7 @@ class Attribution
     }
 
     /**
-     * Set datefin
+     * Set datefin.
      *
      * @param \DateTime $datefin
      *
@@ -140,7 +139,7 @@ class Attribution
     }
 
     /**
-     * Get datefin
+     * Get datefin.
      *
      * @return \DateTime
      */
@@ -150,7 +149,7 @@ class Attribution
     }
 
     /**
-     * Set utilisateur
+     * Set utilisateur.
      *
      * @param \GoBundle\Entity\Utilisateur $utilisateur
      *
@@ -164,7 +163,7 @@ class Attribution
     }
 
     /**
-     * Get utilisateur
+     * Get utilisateur.
      *
      * @return \GoBundle\Entity\Utilisateur
      */
@@ -174,7 +173,7 @@ class Attribution
     }
 
     /**
-     * Set ordinateur
+     * Set ordinateur.
      *
      * @param \GoBundle\Entity\Ordinateur $ordinateur
      *
@@ -188,7 +187,7 @@ class Attribution
     }
 
     /**
-     * Get ordinateur
+     * Get ordinateur.
      *
      * @return \GoBundle\Entity\Ordinateur
      */
@@ -196,13 +195,14 @@ class Attribution
     {
         return $this->ordinateur;
     }
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $creneau;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -210,7 +210,7 @@ class Attribution
     }
 
     /**
-     * Add creneau
+     * Add creneau.
      *
      * @param \GoBundle\Entity\Creneau $creneau
      *
@@ -224,7 +224,7 @@ class Attribution
     }
 
     /**
-     * Remove creneau
+     * Remove creneau.
      *
      * @param \GoBundle\Entity\Creneau $creneau
      */
@@ -234,7 +234,7 @@ class Attribution
     }
 
     /**
-     * Get creneau
+     * Get creneau.
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -244,7 +244,7 @@ class Attribution
     }
 
     /**
-     * Set creneau
+     * Set creneau.
      *
      * @param \GoBundle\Entity\Creneau $creneau
      *
@@ -258,7 +258,7 @@ class Attribution
     }
 
     /**
-     * Add utilisateur
+     * Add utilisateur.
      *
      * @param \GoBundle\Entity\Utilisateur $utilisateur
      *
@@ -272,7 +272,7 @@ class Attribution
     }
 
     /**
-     * Remove utilisateur
+     * Remove utilisateur.
      *
      * @param \GoBundle\Entity\Utilisateur $utilisateur
      */
@@ -282,7 +282,7 @@ class Attribution
     }
 
     /**
-     * Add ordinateur
+     * Add ordinateur.
      *
      * @param \GoBundle\Entity\Ordinateur $ordinateur
      *
@@ -296,7 +296,7 @@ class Attribution
     }
 
     /**
-     * Remove ordinateur
+     * Remove ordinateur.
      *
      * @param \GoBundle\Entity\Ordinateur $ordinateur
      */
