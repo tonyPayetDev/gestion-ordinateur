@@ -46,15 +46,9 @@
         ],
         "post-install-cmd": [
             "@symfony-scripts",
-        "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-        "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-        "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ],
         "post-update-cmd": [
             "@symfony-scripts",
-                    "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-        "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-        "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ],
             "pre-install-cmd": [
         "Acme\\DemoBundle\\HerokuDatabase::populateEnvironment"
