@@ -98,21 +98,23 @@
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">appDevDebugProjectContainer</parameter>
-    <parameter key="database_url">postgresql-concave-11516</parameter>
-    <parameter key="secret">ThisTokenIsNotSoSecretChangeIt</parameter>
-    <parameter key="database_port">null</parameter>
-    <parameter key="database_name">symfony</parameter>
-    <parameter key="database_user">root</parameter>
+    <parameter key="database_driver">pdo_mysql</parameter>
+    <parameter key="database_host">127.0.0.1</parameter>
+    <parameter key="database_port">3306</parameter>
+    <parameter key="database_name">null</parameter>
+    <parameter key="database_user">null</parameter>
     <parameter key="database_password">null</parameter>
+    <parameter key="mailer_host">smtp-relay._.com</parameter>
+    <parameter key="mailer_port">587</parameter>
     <parameter key="mailer_transport">smtp</parameter>
-    <parameter key="mailer_host">127.0.0.1</parameter>
-    <parameter key="mailer_user">null</parameter>
-    <parameter key="mailer_password">null</parameter>
-    <parameter key="database_host">null</parameter>
+    <parameter key="mailer_encryption">tls</parameter>
+    <parameter key="mailer_user">-</parameter>
+    <parameter key="mailer_password">-</parameter>
+    <parameter key="secret">-</parameter>
     <parameter key="locale">en</parameter>
     <parameter key="fragment.renderer.hinclude.global_template">null</parameter>
     <parameter key="fragment.path">/_fragment</parameter>
-    <parameter key="kernel.secret">ThisTokenIsNotSoSecretChangeIt</parameter>
+    <parameter key="kernel.secret">-</parameter>
     <parameter key="kernel.http_method_override">true</parameter>
     <parameter key="kernel.trusted_hosts" type="collection"/>
     <parameter key="kernel.default_locale">en</parameter>
@@ -205,9 +207,9 @@
     <parameter key="swiftmailer.mailer.default.transport.name">smtp</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.encryption">null</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.port">25</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.host">127.0.0.1</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.username">null</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.password">null</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.host">smtp-relay._.com</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.username">-</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.password">-</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">null</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
@@ -592,7 +594,7 @@
       </argument>
     </service>
     <service id="uri_signer" class="Symfony\Component\HttpKernel\UriSigner">
-      <argument>ThisTokenIsNotSoSecretChangeIt</argument>
+      <argument>-</argument>
     </service>
     <service id="config_cache_factory" class="Symfony\Component\Config\ResourceCheckerConfigCacheFactory">
       <argument type="tagged" tag="config_cache.resource_checker"/>
@@ -3114,10 +3116,10 @@
         <argument type="service" id="3_Swift_Transport_Esmtp_Auth_PlainAuthenticator~q3.3wle"/>
       </argument>
       <call method="setUsername">
-        <argument>null</argument>
+        <argument>-</argument>
       </call>
       <call method="setPassword">
-        <argument>null</argument>
+        <argument>-</argument>
       </call>
       <call method="setAuthMode">
         <argument>null</argument>
@@ -3137,7 +3139,7 @@
       </argument>
       <argument type="service" id="swiftmailer.mailer.default.transport.eventdispatcher"/>
       <call method="setHost">
-        <argument>127.0.0.1</argument>
+        <argument>smtp-relay._.com</argument>
       </call>
       <call method="setPort">
         <argument>25</argument>
@@ -3289,10 +3291,10 @@
     <service id="doctrine.dbal.default_connection" class="Doctrine\DBAL\Connection" public="true">
       <argument type="collection">
         <argument key="driver">pdo_mysql</argument>
-        <argument key="host">null</argument>
-        <argument key="port">null</argument>
-        <argument key="dbname">symfony</argument>
-        <argument key="user">root</argument>
+        <argument key="host">127.0.0.1</argument>
+        <argument key="port">3306</argument>
+        <argument key="dbname">null</argument>
+        <argument key="user">null</argument>
         <argument key="password">null</argument>
         <argument key="charset">UTF8</argument>
         <argument key="driverOptions" type="collection"/>
