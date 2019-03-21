@@ -1,5 +1,12 @@
 Symfony Standard Edition
 ========================
+Techno utiliser 
+symfony 3 
+Deploiment heroku 
+Front twig boostrap 4 
+
+Lien vers le site
+http://gestion-ordinateur.herokuapp.com/
 
 Welcome to the Symfony Standard Edition - a fully-functional Symfony2
 application that you can use as the skeleton for your new applications.
