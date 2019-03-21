@@ -5,6 +5,7 @@
     "description": "The \"Symfony Standard Edition\" distribution",
     "autoload": {
         "psr-4": { "": "src/" },
+        "GoBundle\\": "src/GoBundle",
         "files": [ "app/AppKernel.php" ]
     },
     "autoload-dev": {
