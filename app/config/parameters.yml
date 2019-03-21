@@ -4,11 +4,17 @@
 # e.g. development, staging, production.
 # http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 
-#app/config/parameters.yml.dist
 parameters:
-    database_host:     "%database.host%"
-    database_port:     ~
-    database_name:     "%database.name%"
-    database_user:     "%database.user%"
-    database_password: "%database.password%"
-    database_driver:   "%database.driver%"
+    database_driver:         pdo_mysql
+    database_host:           127.0.0.1
+    database_port:           3306
+    database_name:           ##########
+    database_user:           ##########
+    database_password:       ##########
+    mailer_host: smtp-relay._.com
+    mailer_port: 587
+    mailer_transport: smtp
+    mailer_encryption: tls
+    mailer_user: -
+    mailer_password: -
+    secret: -
