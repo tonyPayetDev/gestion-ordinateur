@@ -1,3 +1,3 @@
-go:
-    resource: "@GoBundle/Controller/"
+app:
+    resource: "@AppBundle/Controller/"
     type:     annotation
