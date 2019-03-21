@@ -16,6 +16,7 @@
         "psr-4": { "Tests\\": "tests/" },
         "files": [ "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php" ]
     },
+
     "require": {
         "php": ">=5.5.9",
         "doctrine/doctrine-bundle": "^1.6",
@@ -37,7 +38,10 @@
         "symfony/web-server-bundle": "^3.4"
     },
     "scripts": {
-   
+        "warmup": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache"
+        ],
         "post-install-cmd": [
             "@symfony-scripts"
         ],
@@ -52,14 +56,19 @@
         "sort-packages": true
     },
     "extra": {
+
         "symfony-app-dir": "app",
         "symfony-bin-dir": "bin",
         "symfony-var-dir": "var",
         "symfony-web-dir": "web",
         "symfony-tests-dir": "tests",
         "symfony-assets-install": "relative",
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
+       "incenteev-parameters": {
+        "file": "app/config/parameters.yml",
+        "env-map": {
+            "database_url": "DATABASE_URL",
+            "monolog_action_level": "LOG_LEVEL"
+        }
         },
         "branch-alias": {
             "dev-master": "3.4-dev"
