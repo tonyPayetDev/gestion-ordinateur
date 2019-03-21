@@ -1,0 +1,35 @@
+GoBundle\Entity\Attribution:
+    type: entity
+    table: Attributions
+    repositoryClass: GoBundle\Repository\AttributionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titre:
+            type: string
+            length: 255
+
+    lifecycleCallbacks: {  }
+    manyToOne:
+        utilisateur:
+            targetEntity: Utilisateur
+            inversedBy: attribution
+            joinColumn:
+                name: utilisateur_id
+                referencedColumnName: id
+        ordinateur:
+            targetEntity: Ordinateur
+            inversedBy: attribution
+            joinColumn:
+                name: ordinateur_id
+                referencedColumnName: id
+        creneau:
+            targetEntity: Creneau
+            inversedBy: attribution
+            joinColumn:
+                name: creneau_id
+                referencedColumnName: id

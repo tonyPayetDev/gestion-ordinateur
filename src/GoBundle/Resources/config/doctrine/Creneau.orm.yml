@@ -1,0 +1,28 @@
+GoBundle\Entity\Creneau:
+    type: entity
+    table: Creneaux
+    repositoryClass: GoBundle\Repository\CreneauRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titre:
+            type: string
+            length: 255
+        datedebut:
+            type: datetime
+            nullable: true
+            unique: true
+        datefin:
+            type: datetime
+            nullable: true
+            unique: true
+
+    lifecycleCallbacks: {  }
+    oneToMany:
+        attribution:
+            targetEntity: Attribution
+            mappedBy: creneau

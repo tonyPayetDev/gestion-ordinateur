@@ -1,0 +1,32 @@
+/**
+{% block phpdoc_method_header %}
+    * Lister [ROLE_ADMIN]
+{% endblock phpdoc_method_header %}
+*
+{% block phpdoc_method_annotations %}
+    {% if 'annotation' == format %}
+        * @Route("/", name="{{ namespace|lower }}_{{ entity_pluralized|lower }}_lister", methods={"GET"})
+        * @Template("@{{ namespace|replace({'Bundle':''}) }}/Listes/Liste.html.twig")
+    {% endif %}
+{% endblock phpdoc_method_annotations %}
+*/
+{% block method_definition %}
+    public function listerAction()
+{% endblock method_definition %}
+{
+{% block method_return %}
+    return array(
+    'items' => $this->getDoctrine()->getManager()->createQuery(
+    "SELECT {{ entity_singularized }}.id, {{ entity_singularized }}.titre FROM {{ namespace }}:{{ entity }} as {{ entity_singularized }}"
+    )->getArrayResult(),
+    'actions' => array(
+    'lister' => "{{ namespace|lower }}_{{ entity_pluralized|lower }}_lister",
+    'editer' => "{{ namespace|lower }}_{{ entity_singularized|lower }}_edition",
+    'dupliquer' => "{{ namespace|lower }}_{{ entity_singularized|lower }}_edition",
+    'supprimer' => "{{ namespace|lower }}_{{ entity_singularized|lower }}_suppression",
+    ),
+    'entite' => '{{ entity }}',
+    'entiteNom' => '{{ entity_pluralized }}',
+    );
+{% endblock method_return %}
+}

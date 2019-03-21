@@ -1,0 +1,46 @@
+/**
+{% block phpdoc_method_header %}
+    * Formulaire d'ajout/edition [ROLE_ADMIN]
+{% endblock phpdoc_method_header %}
+*
+{% block phpdoc_method_annotations %}
+    {% if 'annotation' == format %}
+        * @Route("/edition/{{ '{' ~ entity_class ~ '}' }}", name="{{ namespace|lower }}_{{ entity_singularized|lower }}_edition", methods={"GET","POST"}, requirements={"{{ entity_class }}" = "\d+"})
+        * @Template("@{{ namespace|replace({'Bundle':''}) }}/Formulaires/Formulaire.html.twig")
+    {% endif %}
+{% endblock phpdoc_method_annotations %}
+*/
+{% block method_definition %}
+    public function editerAction(Request $request, {{ entity_class }} ${{ entity_class }}= null)
+{% endblock method_definition %}
+{
+{% block method_return %}
+    if (${{ entity_class }} == null) {
+    ${{ entity_class }} = new  {{ entity_class }}();
+    } elseif ($request->query->has('copie')) {
+    ${{ entity_class }} = clone ${{ entity_class }};
+    }
+
+    $form = $this->createForm('{{ namespace }}\Form\{{ entity }}Type', ${{ entity_class }});
+
+    if ($request->isMethod('POST')) {
+    $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid()) {
+    $id = ${{ entity_class }}->getId();
+    $em = $this->getDoctrine()->getManager();
+    $em->persist(${{ entity_class }});
+    $em->flush();
+    $this->get('event_dispatcher')->dispatch(
+    'enregistrement', new GenericEvent('enregistrement', array('nom' => '{{ entity_class }}', 'Entity' => ${{ entity_class }}, 'id' => $id))
+    );
+    return $this->redirect($this->generateUrl('{{ namespace|lower }}_{{ entity_pluralized|lower }}_lister'));
+    }
+    }
+
+    return array(
+    'form' => $form->createView(),
+    'entiteNom' => '{{ entity_singularized }}',
+    'retour' => "{{ namespace|lower }}_{{ entity_pluralized|lower }}_lister",
+    );
+{% endblock method_return %}
+}
