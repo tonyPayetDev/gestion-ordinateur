@@ -1,9 +1,10 @@
 Symfony Standard Edition
 ========================
 Techno utiliser 
-symfony 3 
-Deploiment heroku 
-Front twig boostrap 4 
+ *symfony 3 
+ *heroku 
+ *twig boostrap 4 
+ *phpstorm
 
 Lien vers le site
 http://gestion-ordinateur.herokuapp.com/
