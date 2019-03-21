@@ -90,7 +90,7 @@
             "database_user": "DATABASE_USER",
             "database_password": "DATABASE_PASSWORD"
         }
-    }
+    },
         "branch-alias": {
             "dev-master": "3.4-dev"
         },
