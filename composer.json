@@ -43,10 +43,7 @@
         "warmup": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache"
-        ],
-            "pre-install-cmd": [
-        "Acme\\DemoBundle\\HerokuDatabase::populateEnvironment"
-    ]
+        ]
     },
     "config": {
         "platform": {
