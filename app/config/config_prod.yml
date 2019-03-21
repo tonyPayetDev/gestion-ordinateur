@@ -1,7 +1,3 @@
-monolog:
-    handlers:
-        main:
-            action_level: %monolog_action_level%
 doctrine:
     dbal:
         url: "%database_url%"
